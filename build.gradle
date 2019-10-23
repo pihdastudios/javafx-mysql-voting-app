@@ -8,6 +8,8 @@ buildscript {
     }
     dependencies {
         classpath 'org.openjfx:javafx-plugin:0.0.8'
+            classpath 'com.github.jengelman.gradle.plugins:shadow:5.1.0'
+
     }
 }
 
@@ -15,13 +17,14 @@ buildscript {
 
 plugins {
     id 'java'
+    id 'eclipse'
+
 }
+//create a single Jar with all dependencies
+
 
 group 'dteti'
 version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
-
 repositories {
     mavenCentral()
 }
@@ -29,11 +32,30 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+
 }
 apply plugin: 'org.openjfx.javafxplugin'
+apply plugin: 'com.github.johnrengelman.shadow'
 javafx {
-    version = '12'
+    version = '11.0.2'
     modules = ['javafx.base', 'javafx.graphics', 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.swing', 'javafx.web' ]
 }
+
+jar{
+
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF', 'META-INF/*.DSA'
+    manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+                'Implementation-Version': archiveVersion,
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'pemilukm.teti.App'
+    }
+
+
+
+}
+
+sourceCompatibility = 1.11
+
 
 
