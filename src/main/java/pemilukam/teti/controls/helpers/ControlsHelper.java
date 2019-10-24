@@ -4,21 +4,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DataFormat;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Callback;
-import pemilukm.teti.AdminView;
 import pemilukm.teti.GlobalVar;
-import pemilukm.teti.MainView;
-
 import java.io.IOException;
 
 public final class ControlsHelper {

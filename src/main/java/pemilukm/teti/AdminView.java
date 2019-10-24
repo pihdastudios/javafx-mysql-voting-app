@@ -2,18 +2,13 @@ package pemilukm.teti;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.FileChooser;
-
 import java.awt.Desktop;
-import java.io.IOException;
-
 import javafx.stage.Stage;
 import pemilukam.teti.controls.helpers.ControlsHelper;
 import util.mysqlcon.MySqlCon;

@@ -18,17 +18,17 @@ public class MySqlCon {
 
 	private boolean active;
 
-	public static void addVote(String pNIM, int pCand) throws SQLException {
+	public static void addVote(String nim, int cand) throws SQLException {
 		java.sql.Date startDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		String query = " insert into voters (nim, candidate, date_created)" + " values (?, ?, ?)";
 
 		// create the mysql insert preparedstatement
 		PreparedStatement preparedStmt = conn.prepareStatement(query);
-		preparedStmt.setString(1, pNIM);
-		preparedStmt.setInt(2, pCand);
+		preparedStmt.setString(1, nim);
+		preparedStmt.setInt(2, cand);
 		preparedStmt.setDate(3, startDate);
 
-		// execute the preparedstatement
+		// execute the prepared statement
 		preparedStmt.execute();
 	}
 
