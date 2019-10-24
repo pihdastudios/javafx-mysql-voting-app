@@ -18,9 +18,9 @@ buildscript {
 plugins {
     id 'java'
     id 'eclipse'
+	id "com.github.skjolber.aotc" version "1.0.0"
 
 }
-//create a single Jar with all dependencies
 
 
 group 'dteti'
