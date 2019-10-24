@@ -3,6 +3,7 @@ package pemilukm.teti;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -14,6 +15,7 @@ import java.awt.Desktop;
 import java.io.IOException;
 
 import javafx.stage.Stage;
+import pemilukam.teti.controls.helpers.ControlsHelper;
 import util.mysqlcon.MySqlCon;
 
 public class AdminView extends VBox {
@@ -41,17 +43,10 @@ public class AdminView extends VBox {
 
 	private String dir;
 	private Stage primaryStage;
+	public Parent content;
 
-	public AdminView(Stage pPrimaryStage) {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("AdminView.fxml"));
-		fxmlLoader.setRoot(this);
-		fxmlLoader.setController(this);
-		try {
-			fxmlLoader.load();
-		} catch (IOException exception) {
-			throw new RuntimeException(exception);
-		}
-		primaryStage = pPrimaryStage;
+	public AdminView() {
+		content = ControlsHelper.initControl(this);
 	}
 
 	@FXML
@@ -93,5 +88,9 @@ public class AdminView extends VBox {
 	protected void onOpenFolderBtn(ActionEvent event) {
 		final DirectoryChooser directoryChooser = new DirectoryChooser();
 		String directory = directoryChooser.showDialog(primaryStage).getAbsolutePath();
+	}
+	@FXML protected void onBackBtn() {
+		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
+		GlobalVar.primaryStage.show();
 	}
 }

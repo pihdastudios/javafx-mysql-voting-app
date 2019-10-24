@@ -15,6 +15,9 @@ import javafx.scene.input.TransferMode;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import pemilukm.teti.AdminView;
+import pemilukm.teti.GlobalVar;
+import pemilukm.teti.MainView;
 
 import java.io.IOException;
 
@@ -47,16 +50,10 @@ public final class ControlsHelper {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initOwner(parent.getScene().getWindow());
 		stage.setScene(new Scene(content));
-		// stage.getIcons().add(new Image("icon.png"));
 		return stage;
 	}
 
-	public static Stage setModalStageFor(Stage stage, Node parent, Parent content, String title) {
-		stage.setTitle(title);
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initOwner(parent.getScene().getWindow());
-		stage.setScene(new Scene(content));
-		// stage.getIcons().add(new Image("icon.png"));
-		return stage;
+	public static void changeScene(Parent content) {
+		GlobalVar.primaryStage.setScene(new Scene(content));
 	}
 }
