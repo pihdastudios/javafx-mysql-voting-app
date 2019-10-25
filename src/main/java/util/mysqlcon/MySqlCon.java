@@ -1,21 +1,19 @@
 package util.mysqlcon;
 
+import org.apache.commons.lang3.StringUtils;
+
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Calendar;
 
-import org.apache.commons.lang3.StringUtils;
-
-import javax.swing.*;
-
 public class MySqlCon {
-	private static Connection conn = null;
 	public static String username = "";
 	public static String password = "";
 	public static String address = "";
 	public static String dbName = "";
-
+	private static Connection conn = null;
 	private boolean active;
 
 	public static void addVote(String nim, int cand) throws SQLException {

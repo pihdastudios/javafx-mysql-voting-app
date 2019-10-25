@@ -8,14 +8,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
-import java.awt.Desktop;
 import javafx.stage.Stage;
-import pemilukam.teti.controls.helpers.ControlsHelper;
+import pemilukm.teti.controls.helpers.ControlsHelper;
 import util.mysqlcon.MySqlCon;
 
-public class AdminView extends VBox {
-	private Desktop desktop = Desktop.getDesktop();
+import java.awt.*;
 
+public class AdminView extends VBox {
+	public Parent content;
+	private Desktop desktop = Desktop.getDesktop();
 	@FXML
 	private TextField usernameField;
 	@FXML
@@ -24,7 +25,6 @@ public class AdminView extends VBox {
 	private TextField urlField;
 	@FXML
 	private TextField dbNameField;
-
 	@FXML
 	private Button connectBtn;
 	@FXML
@@ -35,10 +35,8 @@ public class AdminView extends VBox {
 	private Button openFolderBtn;
 	@FXML
 	private Button backBtn;
-
 	private String dir;
 	private Stage primaryStage;
-	public Parent content;
 
 	public AdminView() {
 		content = ControlsHelper.initControl(this);
@@ -84,7 +82,9 @@ public class AdminView extends VBox {
 		final DirectoryChooser directoryChooser = new DirectoryChooser();
 		String directory = directoryChooser.showDialog(primaryStage).getAbsolutePath();
 	}
-	@FXML protected void onBackBtn() {
+
+	@FXML
+	protected void onBackBtn() {
 		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
 		GlobalVar.primaryStage.show();
 	}
