@@ -16,6 +16,7 @@ public class MySqlCon {
 	private static Connection conn = null;
 	private boolean active;
 
+
 	public static void addVote(String nim, int cand) throws SQLException {
 		java.sql.Date startDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
 		String query = " insert into voters (nim, candidate, date_created)" + " values (?, ?, ?)";
@@ -69,9 +70,12 @@ public class MySqlCon {
 	 */
 	public static void newDb() {
 		try {
-			conn = DriverManager.getConnection("jdbc:mysql://" + address + "/", username, password);
+			conn = DriverManager.getConnection("jdbc:mysql://" + address + "/?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 			Statement statement = conn.createStatement();
-			statement.executeUpdate("CREATE DATABASE " + dbName);
+			statement.executeUpdate("CREATE TABLE " + dbName + ".voters ("
+					+ "NIM VARCHAR(45) NOT NULL,"
+					+ "VOTE INT NOT NULL,"
+					+ "CREATED_DATE DATE NOT NULL;");
 		} catch (SQLException ex) {
 			// handle any errors
 			System.out.println("SQLException: " + ex.getMessage());
@@ -95,7 +99,7 @@ public class MySqlCon {
 		if (StringUtils.isNotEmpty(username) || StringUtils.isNotEmpty(password)
 				|| StringUtils.isNotEmpty(address) || StringUtils.isNotEmpty(dbName)) {
 			try {
-				conn = DriverManager.getConnection("jdbc:mysql://" + address + "/" + dbName, username,
+				conn = DriverManager.getConnection("jdbc:mysql://" + address + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username,
 						password);
 			} catch (SQLException ex) {
 				// handle any errors

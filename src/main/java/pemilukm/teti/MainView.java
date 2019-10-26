@@ -27,7 +27,7 @@ public class MainView extends Application {
 		startWindow();
 	}
 
-	public void startWindow() throws IOException {
+    private void startWindow() throws IOException {
 		root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MainView.fxml")));
 
 		Scene scene = new Scene(root);
@@ -36,22 +36,20 @@ public class MainView extends Application {
 		GlobalVar.primaryStage.setMinWidth(600);
 		GlobalVar.primaryStage.setMinHeight(400);
 		GlobalVar.primaryStage.setScene(scene);
+        GlobalVar.primaryStage.setFullScreen(true);
 		GlobalVar.primaryStage.show();
 	}
 
-	public void newObj(String[] args) {
+    void newObj(String[] args) {
 		launch(args);
 	}
 
 	@FXML
 	protected void onEnterBtn() {
 		VoteWindow voteWindow = new VoteWindow();
-
 		ControlsHelper.changeScene(voteWindow.content);
 		GlobalVar.primaryStage.setFullScreen(true);
-
 		GlobalVar.primaryStage.show();
-
 	}
 
 	@FXML

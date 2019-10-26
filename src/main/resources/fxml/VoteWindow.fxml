@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 <VBox xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.1">
+      minWidth="-Infinity" onMouseEntered="#vBOnMouseEntered" prefHeight="800.0" prefWidth="1200.0"
+      xmlns="http://javafx.com/javafx/11.0.1">
     <children>
         <GridPane hgap="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="10.0"
                   VBox.vgrow="ALWAYS">
@@ -51,10 +52,10 @@
                       GridPane.rowIndex="1"/>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.columnIndex="2"
                       GridPane.rowIndex="1"/>
-                <VBox fx:id="vBox_1" alignment="CENTER" maxHeight="1.7976931348623157E308"
-                      maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0">
+                <VBox fx:id="vBox_1" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.hgrow="ALWAYS"
+                      GridPane.vgrow="ALWAYS">
                     <children>
-                        <ImageView fx:id="img_1" blendMode="SRC_ATOP" fitHeight="400.0" pickOnBounds="true"
+                        <ImageView fx:id="img_1" blendMode="SRC_ATOP" fitHeight="600.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
                                 <Image url="@../img/DewanA.jpg"/>
@@ -65,9 +66,10 @@
                         <Insets/>
                     </GridPane.margin>
                 </VBox>
-                <VBox fx:id="vBox_2" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                <VBox fx:id="vBox_2" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1"
+                      GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                     <children>
-                        <ImageView fx:id="img_2" blendMode="SRC_ATOP" fitHeight="400.0" pickOnBounds="true"
+                        <ImageView fx:id="img_2" blendMode="SRC_ATOP" fitHeight="600.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
                                 <Image url="@../img/FirhanA.jpg"/>
@@ -78,9 +80,10 @@
                         <Insets/>
                     </GridPane.margin>
                 </VBox>
-                <VBox fx:id="vBox_3" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2">
+                <VBox fx:id="vBox_3" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2"
+                      GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
                     <children>
-                        <ImageView fx:id="img_3" blendMode="SRC_ATOP" fitHeight="400.0" pickOnBounds="true"
+                        <ImageView fx:id="img_3" blendMode="SRC_ATOP" fitHeight="600.0" pickOnBounds="true"
                                    preserveRatio="true">
                             <image>
                                 <Image url="@../img/GayongA.jpg"/>

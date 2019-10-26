@@ -22,13 +22,10 @@
                 <Label text="Password" GridPane.rowIndex="1"/>
                 <Label text="URL" GridPane.rowIndex="2"/>
                 <Label text="DB Name" GridPane.rowIndex="3"/>
-                <TextField fx:id="usernameField" onInputMethodTextChanged="#setUsername" GridPane.columnIndex="1"/>
-                <PasswordField fx:id="passwordField" onInputMethodTextChanged="#setPassword" GridPane.columnIndex="1"
-                               GridPane.rowIndex="1"/>
-                <TextField fx:id="urlField" onInputMethodTextChanged="#setURL" GridPane.columnIndex="1"
-                           GridPane.rowIndex="2"/>
-                <TextField fx:id="dbNameFIeld" onInputMethodTextChanged="#setDbName" GridPane.columnIndex="1"
-                           GridPane.rowIndex="3"/>
+                <TextField fx:id="usernameField" GridPane.columnIndex="1"/>
+                <PasswordField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <TextField fx:id="urlField" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <TextField fx:id="dbNameField" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
             </children>
             <VBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
@@ -46,12 +43,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <Button fx:id="connectBtn" alignment="CENTER" disable="true" mnemonicParsing="false"
-                        onAction="#onConnectBtn" text="Connect"/>
-                <Button fx:id="backupBtn" disable="true" mnemonicParsing="false" onAction="#onBackupBtn" text="Backup"
+                <Button fx:id="connectBtn" alignment="CENTER" mnemonicParsing="false" onAction="#onConnectBtn"
+                        text="Connect"/>
+                <Button fx:id="backupBtn" mnemonicParsing="false" onAction="#onBackupBtn" text="Backup"
                         GridPane.rowIndex="2"/>
-                <Button fx:id="createDbBtn" disable="true" mnemonicParsing="false" onAction="#onCreateDbBtn"
-                        text="Create DB" GridPane.rowIndex="1"/>
+                <Button fx:id="createDbBtn" mnemonicParsing="false" onAction="#onCreateDbBtn" text="Create DB"
+                        GridPane.rowIndex="1"/>
                 <Button fx:id="openFolderBtn" mnemonicParsing="false" onAction="#onOpenFolderBtn" text="Open Folder"
                         GridPane.columnIndex="1" GridPane.rowIndex="2"/>
                 <Button fx:id="backBtn" mnemonicParsing="false" onAction="#onBackBtn" text="Back"

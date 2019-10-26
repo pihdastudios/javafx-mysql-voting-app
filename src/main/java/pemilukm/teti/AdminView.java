@@ -1,6 +1,5 @@
 package pemilukm.teti;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -15,7 +14,7 @@ import util.mysqlcon.MySqlCon;
 import java.awt.*;
 
 public class AdminView extends VBox {
-	public Parent content;
+	Parent content;
 	private Desktop desktop = Desktop.getDesktop();
 	@FXML
 	private TextField usernameField;
@@ -38,47 +37,58 @@ public class AdminView extends VBox {
 	private String dir;
 	private Stage primaryStage;
 
-	public AdminView() {
+	AdminView() {
 		content = ControlsHelper.initControl(this);
 	}
 
-	@FXML
-	public void setUsername() {
-		MySqlCon.username = usernameField.getText();
-	}
+//	@FXML
+//	public void setUsername() {
+//		MySqlCon.username = usernameField.getText();
+//	}
+//
+//	@FXML
+//	public void setPassword() {
+//		MySqlCon.password = passwordField.getText();
+//	}
+//
+//	@FXML
+//	public void setURL() {
+//		MySqlCon.address = urlField.getText();
+//	}
+//
+//	@FXML
+//	public void setDbName() {
+//		MySqlCon.dbName = dbNameField.getText();
+//	}
 
 	@FXML
-	public void setPassword() {
-		MySqlCon.password = passwordField.getText();
-	}
-
-	@FXML
-	public void setURL() {
-		MySqlCon.address = urlField.getText();
-	}
-
-	@FXML
-	public void setDbName() {
-		MySqlCon.password = dbNameField.getText();
-	}
-
-	@FXML
-	protected void onConnectBtn(ActionEvent event) {
+	protected void onConnectBtn() {
+		setData();
 		MySqlCon.startConnection();
 	}
 
 	@FXML
-	protected void onBackupBtn(ActionEvent event) {
+	protected void onBackupBtn() {
 		MySqlCon.backupDbtoSql(dir);
 	}
 
 	@FXML
-	protected void onCreateDbBtn(ActionEvent event) {
+	protected void onCreateDbBtn() {
+		setData();
 		MySqlCon.newDb();
 	}
 
+	private void setData() {
+		System.out.println(usernameField.getText());
+		MySqlCon.username = usernameField.getText();
+		MySqlCon.password = passwordField.getText();
+		MySqlCon.address = urlField.getText();
+
+		MySqlCon.dbName = dbNameField.getText();
+	}
+
 	@FXML
-	protected void onOpenFolderBtn(ActionEvent event) {
+	protected void onOpenFolderBtn() {
 		final DirectoryChooser directoryChooser = new DirectoryChooser();
 		String directory = directoryChooser.showDialog(primaryStage).getAbsolutePath();
 	}
@@ -86,6 +96,7 @@ public class AdminView extends VBox {
 	@FXML
 	protected void onBackBtn() {
 		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
+		GlobalVar.primaryStage.setFullScreen(true);
 		GlobalVar.primaryStage.show();
 	}
 }
