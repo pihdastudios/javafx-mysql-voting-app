@@ -28,7 +28,7 @@
             <children>
                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="NIM">
                     <font>
-                        <Font size="28.0" />
+                        <Font size="96.0" />
                     </font>
                 </Text>
                 <Button maxHeight="1.7976931348623157E308" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onEnterBtn" prefWidth="150.0" text="Enter" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -39,6 +39,11 @@
                   <Font size="36.0" />
                </font>
             </TextField>
+            <Text fx:id="cekNIM_Fields" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1">
+               <font>
+                  <Font size="32.0" />
+               </font>
+            </Text>
             </children>
         </GridPane>
     </children>

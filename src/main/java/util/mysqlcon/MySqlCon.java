@@ -30,17 +30,18 @@ public class MySqlCon {
 		// execute the prepared statement
 		preparedStmt.execute();
 	}
-	/*
-	public static boolean checkNIM(String nim) throws SQLException {
 
-		String query = "SHOW INDEX FROM voters WHERE hash_nim = 'MD5(?)'";
+	public static boolean checkNIM(String nim) throws SQLException {
+		String query = "select 1 from voters where hash_nim = 'MD5(?)'";
 
 		// create the mysql insert preparedstatement
 		PreparedStatement preparedStmt = conn.prepareStatement(query);
 		preparedStmt.setString(1, nim);
+		ResultSet rs = preparedStmt.executeQuery();
 
+		return rs.next();
 	}
-	*/
+
 	public static void backupDbtoSql(String pDir) {
 		try {
 			String savePath = "\"" + pDir + "/backup/" + "backup.sql\"";

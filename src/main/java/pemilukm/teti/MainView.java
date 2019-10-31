@@ -5,12 +5,14 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pemilukm.teti.controls.helpers.ControlsHelper;
+import util.mysqlcon.MySqlCon;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -23,6 +25,8 @@ public class MainView extends Application {
 	private ImageView img_1;
 	@FXML
 	private TextField hashFields;
+	@FXML
+	private Text cekNIM_Fields;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -49,12 +53,16 @@ public class MainView extends Application {
 
 	@FXML
 	protected void onEnterBtn() {
-
-		VoteWindow voteWindow = new VoteWindow();
-		ControlsHelper.changeScene(voteWindow.content);
-		GlobalVar.hashNIM = hashFields.getText();
-		GlobalVar.primaryStage.setFullScreen(true);
-		GlobalVar.primaryStage.show();
+		if(MySqlCon.checkNIM(hashFields.getText())){
+			cekNIM_Fields.setText("NIM Telah Memilih!");
+		}
+		else {
+			VoteWindow voteWindow = new VoteWindow();
+			ControlsHelper.changeScene(voteWindow.content);
+			GlobalVar.hashNIM = hashFields.getText();
+			GlobalVar.primaryStage.setFullScreen(true);
+			GlobalVar.primaryStage.show();
+		}
 	}
 
 	@FXML
