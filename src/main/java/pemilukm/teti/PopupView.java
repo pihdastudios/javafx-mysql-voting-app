@@ -34,7 +34,6 @@ class PopupView extends VBox {
         GlobalVar.primaryStage.hide();
         GlobalVar.primaryStage.setWidth(600);
         GlobalVar.primaryStage.setHeight(400);
-        GlobalVar.primaryStage.initModality(Modality.APPLICATION_MODAL);
 		GlobalVar.primaryStage.show();
 		stage.close();
 
