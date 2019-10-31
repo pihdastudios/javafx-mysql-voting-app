@@ -4,17 +4,18 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pemilukm.teti.controls.helpers.ControlsHelper;
 import util.mysqlcon.MySqlCon;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Objects;
 
 public class MainView extends Application {
@@ -52,7 +53,7 @@ public class MainView extends Application {
 	}
 
 	@FXML
-	protected void onEnterBtn() {
+    protected void onEnterBtn() throws SQLException {
 		if(MySqlCon.checkNIM(hashFields.getText())){
 			cekNIM_Fields.setText("NIM Telah Memilih!");
 		}

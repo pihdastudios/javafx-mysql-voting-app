@@ -2,11 +2,9 @@ package util.mysqlcon;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.security.MessageDigest;
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
-import java.util.Calendar;
 
 public class MySqlCon {
 	public static String username = "";
@@ -39,6 +37,7 @@ public class MySqlCon {
 		preparedStmt.setString(1, nim);
 		ResultSet rs = preparedStmt.executeQuery();
 
+		System.out.println(rs.next());
 		return rs.next();
 	}
 
