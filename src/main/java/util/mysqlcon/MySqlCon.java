@@ -1,6 +1,7 @@
 package util.mysqlcon;
 
 import org.apache.commons.lang3.StringUtils;
+import pemilukm.teti.GlobalVar;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -105,6 +106,7 @@ public class MySqlCon {
 				conn = DriverManager.getConnection("jdbc:mysql://" + address + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username,
 						password);
 				System.out.println("DBConnected: " + dbName);
+				GlobalVar.connActive = true;
 			} catch (SQLException ex) {
 				// handle any errors
 				System.out.println("SQLException: " + ex.getMessage());

@@ -54,7 +54,10 @@ public class MainView extends Application {
 
 	@FXML
     protected void onEnterBtn() throws SQLException {
-		if(MySqlCon.checkNIM(hashFields.getText())){
+		if(GlobalVar.connActive == false){
+			cekNIM_Fields.setText("Database belum terkoneksi!");
+		}
+		else if(MySqlCon.checkNIM(hashFields.getText())){
 			cekNIM_Fields.setText("NIM Telah Memilih!");
 		}
 		else {
