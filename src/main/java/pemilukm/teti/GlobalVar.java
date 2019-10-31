@@ -5,5 +5,6 @@ import javafx.stage.Stage;
 
 public class GlobalVar {
 	public static Stage primaryStage;
-    static Scene mainScene;
+    public static Scene mainScene;
+
 }

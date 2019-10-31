@@ -41,26 +41,6 @@ public class AdminView extends VBox {
 		content = ControlsHelper.initControl(this);
 	}
 
-//	@FXML
-//	public void setUsername() {
-//		MySqlCon.username = usernameField.getText();
-//	}
-//
-//	@FXML
-//	public void setPassword() {
-//		MySqlCon.password = passwordField.getText();
-//	}
-//
-//	@FXML
-//	public void setURL() {
-//		MySqlCon.address = urlField.getText();
-//	}
-//
-//	@FXML
-//	public void setDbName() {
-//		MySqlCon.dbName = dbNameField.getText();
-//	}
-
 	@FXML
 	protected void onConnectBtn() {
 		setData();
@@ -69,6 +49,7 @@ public class AdminView extends VBox {
 
 	@FXML
 	protected void onBackupBtn() {
+		setData();
 		MySqlCon.backupDbtoSql(dir);
 	}
 
@@ -79,7 +60,6 @@ public class AdminView extends VBox {
 	}
 
 	private void setData() {
-		System.out.println(usernameField.getText());
 		MySqlCon.username = usernameField.getText();
 		MySqlCon.password = passwordField.getText();
 		MySqlCon.address = urlField.getText();
@@ -90,7 +70,7 @@ public class AdminView extends VBox {
 	@FXML
 	protected void onOpenFolderBtn() {
 		final DirectoryChooser directoryChooser = new DirectoryChooser();
-		String directory = directoryChooser.showDialog(primaryStage).getAbsolutePath();
+		dir = directoryChooser.showDialog(primaryStage).getAbsolutePath();
 	}
 
 	@FXML

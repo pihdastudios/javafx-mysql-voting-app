@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import pemilukm.teti.controls.helpers.ControlsHelper;
 import util.mysqlcon.MySqlCon;
@@ -21,20 +22,31 @@ public class VoteWindow extends VBox {
 	@FXML
 	private ImageView img_3;
 	@FXML
-	private VBox vBox_1;
+	private StackPane stackPane_1;
 	@FXML
-	private VBox vBox_2;
+	private StackPane stackPane_2;
 	@FXML
-	private VBox vBox_3;
+	private StackPane stackPane_3;
 	private boolean init;
 
 	VoteWindow() {
 		content = ControlsHelper.initControl(this);
+
 	}
 
 	@FXML
 	public void initialize() {
-//		adjustImg();
+//		Region veil = new Region();
+//		veil.setStyle("-fx-background-color: rgba(0, 0, 0, 0.3)");
+//		veil.setVisible(false);
+//
+//		Alert a = new Alert(Alert.AlertType.INFORMATION);
+//		veil.visibleProperty().bind(a.showingProperty());
+//
+//		a.setContentText("The main window should be decorated with a veil.");
+//		a.setX(GlobalVar.primaryStage.getX() + 200);
+//		a.show();
+//		Platform.runLater(this::adjustImg);
 	}
 
 	@FXML
@@ -67,9 +79,9 @@ public class VoteWindow extends VBox {
 	}
 
 	public void adjustImg() {
-		img_1.setFitHeight(vBox_1.getHeight());
-		img_2.setFitHeight(vBox_2.getHeight());
-		img_3.setFitHeight(vBox_3.getHeight());
+//		img_1.setFitHeight(stackPane_1.getHeight());
+//		img_2.setFitHeight(stackPane_2.getHeight());
+//		img_3.setFitHeight(stackPane_3.getHeight());
 
 	}
 

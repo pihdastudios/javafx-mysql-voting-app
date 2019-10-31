@@ -3,7 +3,6 @@ package util.mysqlcon;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.swing.*;
-import java.io.File;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Calendar;
@@ -19,7 +18,7 @@ public class MySqlCon {
 
 	public static void addVote(String nim, int cand) throws SQLException {
 		java.sql.Date startDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-		String query = " insert into voters (nim, candidate, date_created)" + " values (?, ?, ?)";
+		String query = " insert into voters (nim, vote, date_created)" + " values (?, ?, ?)";
 
 		// create the mysql insert preparedstatement
 		PreparedStatement preparedStmt = conn.prepareStatement(query);
@@ -33,27 +32,22 @@ public class MySqlCon {
 
 	public static void backupDbtoSql(String pDir) {
 		try {
-
-			String folderPath = pDir + "\\backup";
-
-			/* Creating Folder if it does not exist */
-			File f1 = new File(folderPath);
-			f1.mkdir();
-
-			String savePath = "\"" + pDir + "\\backup\\" + "backup.sql\"";
+			String savePath = "\"" + pDir + "/backup/" + "backup.sql\"";
 
 			/* NOTE: Used to create a cmd command */
-			String executeCmd = "mysqldump -u" + username + " -p" + password + " --database " + dbName
-					+ " -r " + savePath;
+			String executeCmd = "mysqldump -u " + username + " -p " + password + " --database " + dbName
+					+ " -r /tmp/bak.sql";
 
 			/* NOTE: Executing the command here */
 			Process runtimeProcess = Runtime.getRuntime().exec(executeCmd);
+//			runtimeProcess.getOutputStream().write(password.getBytes());
 			int processComplete = runtimeProcess.waitFor();
 
 			/*
 			 * NOTE: processComplete=0 if correctly executed, will contain other values if
 			 * not
 			 */
+			System.out.println(executeCmd);
 			if (processComplete == 0) {
 				System.out.println("Backup Complete");
 			} else {
@@ -72,10 +66,8 @@ public class MySqlCon {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://" + address + "/?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 			Statement statement = conn.createStatement();
-			statement.executeUpdate("CREATE TABLE " + dbName + ".voters ("
-					+ "NIM VARCHAR(45) NOT NULL,"
-					+ "VOTE INT NOT NULL,"
-					+ "CREATED_DATE DATE NOT NULL;");
+			statement.executeUpdate("CREATE DATABASE " + dbName);
+			statement.executeUpdate(String.format("CREATE TABLE %s.voters (NIM VARCHAR(45) NOT NULL,VOTE INT NOT NULL,DATE_CREATED DATE NOT NULL);", dbName));
 		} catch (SQLException ex) {
 			// handle any errors
 			System.out.println("SQLException: " + ex.getMessage());
