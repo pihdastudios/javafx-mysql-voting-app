@@ -30,8 +30,8 @@ class PopupView extends VBox {
 
 		AdminView adminView = new AdminView();
 		ControlsHelper.changeScene(adminView.content);
-        GlobalVar.primaryStage.setWidth(600);
-        GlobalVar.primaryStage.setHeight(400);
+//        GlobalVar.primaryStage.setWidth(600);
+//        GlobalVar.primaryStage.setHeight(400);
 		GlobalVar.primaryStage.show();
 		stage.close();
 
