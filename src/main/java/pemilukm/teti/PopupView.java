@@ -31,6 +31,7 @@ class PopupView extends VBox {
 
 		AdminView adminView = new AdminView();
 		ControlsHelper.changeScene(adminView.content);
+        GlobalVar.primaryStage.hide();
         GlobalVar.primaryStage.setWidth(600);
         GlobalVar.primaryStage.setHeight(400);
         GlobalVar.primaryStage.initModality(Modality.APPLICATION_MODAL);
