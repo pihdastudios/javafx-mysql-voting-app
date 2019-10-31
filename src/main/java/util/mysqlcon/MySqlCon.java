@@ -30,14 +30,13 @@ public class MySqlCon {
 	}
 
 	public static boolean checkNIM(String nim) throws SQLException {
-		String query = "select 1 from voters where hash_nim = 'MD5(?)'";
+		String query = "select 1 from voters where hash_nim = MD5(?)";
 
 		// create the mysql insert preparedstatement
 		PreparedStatement preparedStmt = conn.prepareStatement(query);
 		preparedStmt.setString(1, nim);
 		ResultSet rs = preparedStmt.executeQuery();
 
-		System.out.println(rs.next());
 		return rs.next();
 	}
 

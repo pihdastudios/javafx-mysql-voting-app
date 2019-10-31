@@ -58,6 +58,7 @@ public class MainView extends Application {
 			cekNIM_Fields.setText("NIM Telah Memilih!");
 		}
 		else {
+			cekNIM_Fields.setText("");
 			VoteWindow voteWindow = new VoteWindow();
 			ControlsHelper.changeScene(voteWindow.content);
 			GlobalVar.hashNIM = hashFields.getText();
