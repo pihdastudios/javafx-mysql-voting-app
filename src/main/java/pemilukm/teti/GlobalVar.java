@@ -6,5 +6,6 @@ import javafx.stage.Stage;
 public class GlobalVar {
 	public static Stage primaryStage;
     public static Scene mainScene;
+    public static String hashNIM;
 
 }

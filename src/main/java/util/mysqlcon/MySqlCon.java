@@ -2,6 +2,7 @@ package util.mysqlcon;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.security.MessageDigest;
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
@@ -17,19 +18,29 @@ public class MySqlCon {
 
 
 	public static void addVote(String nim, int cand) throws SQLException {
-		java.sql.Date startDate = new java.sql.Date(Calendar.getInstance().getTime().getTime());
-		String query = " insert into voters (nim, vote, date_created)" + " values (?, ?, ?)";
+		Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
+		String query = "insert into voters (hash_nim, vote, waktu)" + " values (MD5(?), ?, ?)";
 
 		// create the mysql insert preparedstatement
 		PreparedStatement preparedStmt = conn.prepareStatement(query);
 		preparedStmt.setString(1, nim);
 		preparedStmt.setInt(2, cand);
-		preparedStmt.setDate(3, startDate);
+		preparedStmt.setTimestamp(3, timeStamp);
 
 		// execute the prepared statement
 		preparedStmt.execute();
 	}
+	/*
+	public static boolean checkNIM(String nim) throws SQLException {
 
+		String query = "SHOW INDEX FROM voters WHERE hash_nim = 'MD5(?)'";
+
+		// create the mysql insert preparedstatement
+		PreparedStatement preparedStmt = conn.prepareStatement(query);
+		preparedStmt.setString(1, nim);
+
+	}
+	*/
 	public static void backupDbtoSql(String pDir) {
 		try {
 			String savePath = "\"" + pDir + "/backup/" + "backup.sql\"";
@@ -66,8 +77,9 @@ public class MySqlCon {
 		try {
 			conn = DriverManager.getConnection("jdbc:mysql://" + address + "/?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 			Statement statement = conn.createStatement();
-			statement.executeUpdate("CREATE DATABASE " + dbName);
-			statement.executeUpdate(String.format("CREATE TABLE %s.voters (NIM VARCHAR(45) NOT NULL,VOTE INT NOT NULL,DATE_CREATED DATE NOT NULL);", dbName));
+			//statement.executeUpdate("CREATE DATABASE " + dbName);
+			statement.executeUpdate(String.format("CREATE TABLE %s.voters (HASH_NIM VARCHAR(255) PRIMARY KEY,VOTE INT NOT NULL,WAKTU TIMESTAMP NOT NULL);", dbName));
+			System.out.println("Created table at: " + dbName);
 		} catch (SQLException ex) {
 			// handle any errors
 			System.out.println("SQLException: " + ex.getMessage());
@@ -93,6 +105,7 @@ public class MySqlCon {
 			try {
 				conn = DriverManager.getConnection("jdbc:mysql://" + address + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username,
 						password);
+				System.out.println("DBConnected: " + dbName);
 			} catch (SQLException ex) {
 				// handle any errors
 				System.out.println("SQLException: " + ex.getMessage());

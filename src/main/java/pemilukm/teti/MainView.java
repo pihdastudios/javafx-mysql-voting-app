@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
@@ -20,6 +21,8 @@ public class MainView extends Application {
 	private Parent root;
 	@FXML
 	private ImageView img_1;
+	@FXML
+	private TextField hashFields;
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
@@ -46,8 +49,10 @@ public class MainView extends Application {
 
 	@FXML
 	protected void onEnterBtn() {
+
 		VoteWindow voteWindow = new VoteWindow();
 		ControlsHelper.changeScene(voteWindow.content);
+		GlobalVar.hashNIM = hashFields.getText();
 		GlobalVar.primaryStage.setFullScreen(true);
 		GlobalVar.primaryStage.show();
 	}
