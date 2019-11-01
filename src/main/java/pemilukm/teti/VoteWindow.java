@@ -36,17 +36,7 @@ public class VoteWindow extends VBox {
 
 	@FXML
 	public void initialize() {
-//		Region veil = new Region();
-//		veil.setStyle("-fx-background-color: rgba(0, 0, 0, 0.3)");
-//		veil.setVisible(false);
-//
-//		Alert a = new Alert(Alert.AlertType.INFORMATION);
-//		veil.visibleProperty().bind(a.showingProperty());
-//
-//		a.setContentText("The main window should be decorated with a veil.");
-//		a.setX(GlobalVar.primaryStage.getX() + 200);
-//		a.show();
-//		Platform.runLater(this::adjustImg);
+//		adjustImg();
 	}
 
 	@FXML

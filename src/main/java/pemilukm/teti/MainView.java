@@ -64,6 +64,7 @@ public class MainView extends Application {
 			cekNIM_Fields.setText("");
 			VoteWindow voteWindow = new VoteWindow();
 			ControlsHelper.changeScene(voteWindow.content);
+            GlobalVar.primaryStage.hide();
 			GlobalVar.hashNIM = hashFields.getText();
 			GlobalVar.primaryStage.setFullScreen(true);
 			GlobalVar.primaryStage.show();

@@ -13,7 +13,6 @@ public class MySqlCon {
 	public static String address = "";
 	public static String dbName = "";
 	private static Connection conn = null;
-	private boolean active;
 
 
 	public static void addVote(String nim, int cand) throws SQLException {
