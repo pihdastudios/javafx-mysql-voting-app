@@ -61,11 +61,17 @@ public class MainView extends Application {
         loadingDialog.setHeight(300);
         loadingDialog.setWidth(300);
         loadingDialog.show();
+        int cek =MySqlCon.cekNIM(hashFields.getText());
         if (GlobalVar.connActive == false) {
             cekNIM_Fields.setText("Database belum terkoneksi!");
-        } else if (MySqlCon.checkNIM(hashFields.getText())) {
+        } else if (cek == 0){
+            cekNIM_Fields.setText("NIM Tidak Valid!");
+        } else if (cek == 2) {
             cekNIM_Fields.setText("NIM Telah Memilih!");
-        } else {
+        }else {
+            if(MySqlCon.cekConn()){
+                MySqlCon.startConnection();
+            }
             cekNIM_Fields.setText("");
             VoteWindow voteWindow = new VoteWindow();
             ControlsHelper.changeScene(voteWindow.content);
