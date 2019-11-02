@@ -63,7 +63,7 @@
                   <Font size="36.0" />
                </font>
             </TextField>
-                <Text fx:id="cekNIM_Fields" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2">
+                <Text fx:id="cekNIM_Fields" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="2">
                <font>
                   <Font size="32.0" />
                </font>
