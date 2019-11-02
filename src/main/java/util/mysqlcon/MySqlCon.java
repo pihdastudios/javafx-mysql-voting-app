@@ -28,13 +28,13 @@ public class MySqlCon {
         preparedStmt.setInt(2, cand);
         preparedStmt.setTimestamp(3, timeStamp);
 
-        File file = new File(System.getProperty("user.dir") + "bak.csv");
+        File file = new File("./bak.csv");
         try {
             // create FileWriter object with file as parameter
             FileWriter outputfile = new FileWriter(file, true);
 
             // create CSVWriter object filewriter object as parameter
-            CSVWriter writer = new CSVWriter(outputfile);
+            CSVWriter writer = new CSVWriter(outputfile, ';', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
 
             String[] row = {nim, String.valueOf(cand), timeStamp.toString()};
             writer.writeNext(row);

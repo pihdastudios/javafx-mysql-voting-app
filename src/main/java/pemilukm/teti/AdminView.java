@@ -53,7 +53,7 @@ public class AdminView extends VBox {
         loadingDialog.initStyle(StageStyle.UNDECORATED);
 
 
-//		loadingDialog.close();
+//
         Task<Boolean> task = new Task<Boolean>() {
             @Override
             public Boolean call() {
@@ -69,6 +69,7 @@ public class AdminView extends VBox {
         });
         task.setOnSucceeded((e) -> {
             loadingDialog.hide();
+            loadingDialog.close();
         });
         new Thread(task).start();
 
