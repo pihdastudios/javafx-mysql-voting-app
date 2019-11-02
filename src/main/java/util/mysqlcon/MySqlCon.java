@@ -2,6 +2,7 @@ package util.mysqlcon;
 
 import org.apache.commons.lang3.StringUtils;
 import pemilukm.teti.GlobalVar;
+import util.hash.AES;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -20,11 +21,12 @@ public class MySqlCon {
 
     public static void addVote(String nim, int cand) throws SQLException {
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
-        String query = "insert into BALLOTS (NIMHASH, VOTE, WAKTU)" + " values (HEX(AES_ENCRYPT(?,'PemiluKMTETI19.;9eD5')), ?, ?)";
+        String encryptedNIM = AES.encrypt(nim, GlobalVar.AESKey);
+        String query = "insert into BALLOTS (NIMHASH, VOTE, WAKTU)" + " values (?, ?, ?)";
 
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = conn.prepareStatement(query);
-        preparedStmt.setString(1, nim);
+        preparedStmt.setString(1, encryptedNIM);
         preparedStmt.setInt(2, cand);
         preparedStmt.setTimestamp(3, timeStamp);
 
@@ -36,7 +38,7 @@ public class MySqlCon {
             // create CSVWriter object filewriter object as parameter
             CSVWriter writer = new CSVWriter(outputfile, ';', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
 
-            String[] row = {nim, String.valueOf(cand), timeStamp.toString()};
+            String[] row = {encryptedNIM, String.valueOf(cand), timeStamp.toString()};
             writer.writeNext(row);
 
             // closing writer connection
