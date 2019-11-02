@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import pemilukm.teti.controls.helpers.ControlsHelper;
 
@@ -41,6 +40,6 @@ class PopupView extends VBox {
 
 	@FXML
 	protected void onBackBtn() {
-
+        stage.hide();
 	}
 }
