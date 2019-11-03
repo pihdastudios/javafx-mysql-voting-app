@@ -20,6 +20,13 @@ public class MySqlCon {
 
 
     public static void addVote(String nim, int cand) throws SQLException {
+
+        System.out.println("Koneksi -> " + cekConn());
+
+        if(cekConn()){
+            startConnection();
+        }
+
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
         String encryptedNIM = AES.encrypt(nim, GlobalVar.AESKey);
         String query = "insert into BALLOTS (NIMHASH, VOTE, WAKTU)" + " values (?, ?, ?)";
@@ -157,7 +164,7 @@ public class MySqlCon {
         if (StringUtils.isNotEmpty(username) || StringUtils.isNotEmpty(password)
                 || StringUtils.isNotEmpty(address) || StringUtils.isNotEmpty(dbName)) {
             try {
-                conn = DriverManager.getConnection("jdbc:mysql://" + address + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username,
+                conn = DriverManager.getConnection("jdbc:mysql://" + address + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&autoReconnect=true", username,
                         password);
                 System.out.println("DBConnected: " + dbName);
                 GlobalVar.connActive = true;

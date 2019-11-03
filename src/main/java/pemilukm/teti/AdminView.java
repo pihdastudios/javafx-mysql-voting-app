@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
@@ -14,6 +15,7 @@ import pemilukm.teti.controls.helpers.ControlsHelper;
 import util.mysqlcon.MySqlCon;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class AdminView extends VBox {
     Parent content;
@@ -43,6 +45,15 @@ public class AdminView extends VBox {
 
     AdminView() {
         content = ControlsHelper.initControl(this);
+    }
+
+    @FXML
+    protected void onUsername() {
+        usernameField.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                onConnectBtn();
+            }
+        });
     }
 
     @FXML

@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -25,7 +27,7 @@ public class MainView extends Application {
     @FXML
     private ImageView img_1;
     @FXML
-    private TextField hashFields;
+    private TextField nimFields;
     @FXML
     private Text cekNIM_Fields;
 
@@ -53,6 +55,20 @@ public class MainView extends Application {
     }
 
     @FXML
+    protected void onNIM() {
+        nimFields.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER){
+                try{
+                    onEnterBtn();
+                }
+                catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @FXML
     protected void onEnterBtn() throws SQLException {
         LoadingWindow loadingWindow = new LoadingWindow();
         Stage loadingDialog = ControlsHelper.createModalStageFor(root, loadingWindow.content, "");
@@ -69,7 +85,7 @@ public class MainView extends Application {
                 MySqlCon.startConnection();
             }
 
-            int cek = MySqlCon.cekNIM(hashFields.getText());
+            int cek = MySqlCon.cekNIM(nimFields.getText());
 
              if (cek == 0){
                 cekNIM_Fields.setText("NIM Tidak Valid!");
@@ -80,8 +96,9 @@ public class MainView extends Application {
                 VoteWindow voteWindow = new VoteWindow();
                 ControlsHelper.changeScene(voteWindow.content);
                 GlobalVar.primaryStage.hide();
-                GlobalVar.hashNIM = hashFields.getText();
+                GlobalVar.valueNIM = nimFields.getText();
                 GlobalVar.primaryStage.setFullScreen(true);
+                GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
                 GlobalVar.primaryStage.show();
             }
         }

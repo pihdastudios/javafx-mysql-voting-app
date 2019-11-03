@@ -41,14 +41,14 @@ public class VoteWindow extends VBox {
 
 	@FXML
 	protected void onBackBtn() {
-		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
-		GlobalVar.primaryStage.setFullScreen(true);
-		GlobalVar.primaryStage.show();
+//		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
+//		GlobalVar.primaryStage.setFullScreen(true);
+//		GlobalVar.primaryStage.show();
 	}
 
 	@FXML
 	protected void onCandBtn_1() throws SQLException {
-		MySqlCon.addVote(GlobalVar.hashNIM, 1);
+		MySqlCon.addVote(GlobalVar.valueNIM, 1);
 		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
 		GlobalVar.primaryStage.setFullScreen(true);
 		GlobalVar.primaryStage.show();
@@ -56,7 +56,7 @@ public class VoteWindow extends VBox {
 
 	@FXML
 	protected void onCandBtn_2() throws SQLException {
-		MySqlCon.addVote(GlobalVar.hashNIM, 2);
+		MySqlCon.addVote(GlobalVar.valueNIM, 2);
 		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
 		GlobalVar.primaryStage.setFullScreen(true);
 		GlobalVar.primaryStage.show();
@@ -64,7 +64,7 @@ public class VoteWindow extends VBox {
 
 	@FXML
 	protected void onCandBtn_3() throws SQLException {
-		MySqlCon.addVote(GlobalVar.hashNIM, 3);
+		MySqlCon.addVote(GlobalVar.valueNIM, 3);
 		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
 		GlobalVar.primaryStage.setFullScreen(true);
 		GlobalVar.primaryStage.show();

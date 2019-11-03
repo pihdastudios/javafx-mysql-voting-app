@@ -44,7 +44,7 @@
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
             <children>
-                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="NIM" textAlignment="RIGHT" wrappingWidth="475.5625" GridPane.rowIndex="1">
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="NIM" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                     <font>
                         <Font name="Manjari Bold" size="96.0" />
                     </font>
@@ -52,7 +52,7 @@
                 <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onEnterBtn" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: rgb(22,131,160);" text="Enter" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExitBtn" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: rgb(22,131,160);" text="Exit" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                 <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onAdminBtn" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: rgb(22,131,160);" text="Admin" textFill="WHITE" GridPane.rowIndex="3" />
-                <TextField fx:id="hashFields" style="-fx-background-color: rgb(184,224,225);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <TextField fx:id="nimFields" onAction="#onNIM" style="-fx-background-color: rgb(184,224,225);" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="36.0" />
                </font>
