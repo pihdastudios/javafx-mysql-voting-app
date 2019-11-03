@@ -3,7 +3,9 @@ package pemilukm.teti;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.PasswordField;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import pemilukm.teti.controls.helpers.ControlsHelper;
 
@@ -15,6 +17,10 @@ class PopupView extends VBox {
 	public Node mainRoot;
 	@FXML
 	Node root;
+	@FXML
+	private PasswordField passwordField;
+	@FXML
+	private Text cekPass_Fields;
 
     PopupView() {
 		content = ControlsHelper.initControl(this);
@@ -27,15 +33,18 @@ class PopupView extends VBox {
 
 	@FXML
 	protected void onEnterBtn() throws IOException {
-
-		AdminView adminView = new AdminView();
-		ControlsHelper.changeScene(adminView.content);
-        GlobalVar.primaryStage.hide();
-        GlobalVar.primaryStage.setWidth(600);
-        GlobalVar.primaryStage.setHeight(400);
-		GlobalVar.primaryStage.show();
-		stage.close();
-
+		if(passwordField.getText().equals(GlobalVar.passAdmin)){
+			cekPass_Fields.setText("");
+			AdminView adminView = new AdminView();
+			ControlsHelper.changeScene(adminView.content);
+			GlobalVar.primaryStage.hide();
+			GlobalVar.primaryStage.setWidth(600);
+			GlobalVar.primaryStage.setHeight(400);
+			GlobalVar.primaryStage.show();
+			stage.close();
+		} else{
+			cekPass_Fields.setText("Password salah!");
+		}
 	}
 
 	@FXML

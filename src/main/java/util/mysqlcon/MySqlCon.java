@@ -30,7 +30,10 @@ public class MySqlCon {
         preparedStmt.setInt(2, cand);
         preparedStmt.setTimestamp(3, timeStamp);
 
-        File file = new File("./bak.csv");
+        //execute prepared statement
+        preparedStmt.execute();
+
+        File file = new File("./bak_BALLOTS.csv");
         try {
             // create FileWriter object with file as parameter
             FileWriter outputfile = new FileWriter(file, true);
@@ -47,13 +50,29 @@ public class MySqlCon {
             //Auto-generated catch block
             e.printStackTrace();
         }
-        // execute the prepared statement
-        preparedStmt.execute();
 
         query = "update VOTERS set STATUS = 2 where NIM = ?";
         preparedStmt = conn.prepareStatement(query);
         preparedStmt.setString(1, nim);
         preparedStmt.execute();
+
+        file = new File("./bak_VOTERS.csv");
+        try {
+            // create FileWriter object with file as parameter
+            FileWriter outputfile = new FileWriter(file, true);
+
+            // create CSVWriter object filewriter object as parameter
+            CSVWriter writer = new CSVWriter(outputfile, ';', CSVWriter.NO_QUOTE_CHARACTER, CSVWriter.DEFAULT_ESCAPE_CHARACTER, CSVWriter.DEFAULT_LINE_END);
+
+            String[] row = {nim, "2"};
+            writer.writeNext(row);
+
+            // closing writer connection
+            writer.close();
+        } catch (IOException e) {
+            //Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     public static int cekNIM(String nim) throws SQLException {

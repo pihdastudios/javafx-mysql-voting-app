@@ -8,6 +8,6 @@ public class GlobalVar {
     public static Scene mainScene;
     public static String hashNIM;
     public static boolean connActive;
-    public static String AESKey = "PemiluKMTETI19.;9eD5";
-
+    public static String AESKey = "$PemiluKMTETI19@";
+    public static String passAdmin = "19pemilu";
 }
