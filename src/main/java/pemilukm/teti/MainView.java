@@ -81,9 +81,7 @@ public class MainView extends Application {
             cekNIM_Fields.setText("Database belum terkoneksi!");
         } else{
 
-            if(MySqlCon.cekConn()){
-                MySqlCon.startConnection();
-            }
+            System.out.println("Koneksi -> " + MySqlCon.cekConn());
 
             int cek = MySqlCon.cekNIM(nimFields.getText());
 

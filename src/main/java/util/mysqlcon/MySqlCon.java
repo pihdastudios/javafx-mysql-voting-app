@@ -18,14 +18,24 @@ public class MySqlCon {
     public static String dbName = "";
     private static Connection conn = null;
 
+    public static boolean cekConn() throws SQLException {
+        try {
+            String query = "SELECT version()";
+            PreparedStatement preparedStmt = conn.prepareStatement(query);
+            ResultSet rs = preparedStmt.executeQuery();
+            return false;
+        }
+        catch (Exception e) {
+            startConnection();
+            System.err.println("Connection failed, got an exception! ");
+            System.err.println(e.getMessage());
+            return true;
+        }
+    }
 
     public static void addVote(String nim, int cand) throws SQLException {
 
         System.out.println("Koneksi -> " + cekConn());
-
-        if(cekConn()){
-            startConnection();
-        }
 
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
         String encryptedNIM = AES.encrypt(nim, GlobalVar.AESKey);
@@ -96,10 +106,6 @@ public class MySqlCon {
             System.out.println(nim + " Tidak Valid!");
             return 0;
         }
-    }
-
-    public static boolean cekConn() throws SQLException {
-        return conn.isClosed();
     }
 
     public static void backupDbtoSql(String pDir) {
