@@ -25,12 +25,15 @@ class PopupVoteView extends VBox {
     private PasswordField passwordField;
     @FXML
     private Text cekPass_Fields;
+    @FXML
+    private Label voteLabel;
 
     PopupVoteView() {
         content = ControlsHelper.initControl(this);
     }
 
     public static void setVote(int val){
+        voteLabel.setText("Anda memilih calon nomor urut " + val);
         voteCand = val;
     }
 
@@ -47,6 +50,7 @@ class PopupVoteView extends VBox {
 //            }
 //        });
 //    }
+
 
     @FXML
     protected void onYesBtn() throws SQLException {
