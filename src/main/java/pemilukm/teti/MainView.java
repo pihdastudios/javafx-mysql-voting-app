@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -30,6 +31,8 @@ public class MainView extends Application {
     private TextField nimFields;
     @FXML
     private Text cekNIM_Fields;
+    @FXML
+    private PasswordField mainPassFields;
 
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -57,11 +60,10 @@ public class MainView extends Application {
     @FXML
     protected void onNIM() {
         nimFields.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.ENTER){
-                try{
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
                     onEnterBtn();
-                }
-                catch (SQLException e){
+                } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
@@ -70,38 +72,42 @@ public class MainView extends Application {
 
     @FXML
     protected void onEnterBtn() throws SQLException {
-        LoadingWindow loadingWindow = new LoadingWindow();
-        Stage loadingDialog = ControlsHelper.createModalStageFor(root, loadingWindow.content, "");
-        loadingWindow.stage = loadingDialog;
-        loadingDialog.initStyle(StageStyle.UNDECORATED);
-        loadingDialog.setHeight(300);
-        loadingDialog.setWidth(300);
-        loadingDialog.show();
-        if (GlobalVar.connActive == false) {
-            cekNIM_Fields.setText("Database belum terkoneksi!");
-        } else{
-
-            System.out.println("Koneksi -> " + MySqlCon.cekConn());
-
-            int cek = MySqlCon.cekNIM(nimFields.getText());
-
-             if (cek == 0){
-                cekNIM_Fields.setText("NIM Tidak Valid!");
-            } else if (cek == 2) {
-                cekNIM_Fields.setText("NIM Telah Memilih!");
+        if (mainPassFields.getText().equals(GlobalVar.passMain)) {
+            LoadingWindow loadingWindow = new LoadingWindow();
+            Stage loadingDialog = ControlsHelper.createModalStageFor(root, loadingWindow.content, "");
+            loadingWindow.stage = loadingDialog;
+            loadingDialog.initStyle(StageStyle.UNDECORATED);
+            loadingDialog.setHeight(300);
+            loadingDialog.setWidth(300);
+            loadingDialog.show();
+            if (GlobalVar.connActive == false) {
+                cekNIM_Fields.setText("Database belum terkoneksi!");
             } else {
-                cekNIM_Fields.setText("");
-                VoteWindow voteWindow = new VoteWindow();
-                ControlsHelper.changeScene(voteWindow.content);
-                GlobalVar.primaryStage.hide();
-                GlobalVar.valueNIM = nimFields.getText();
-                GlobalVar.primaryStage.setFullScreen(true);
-                GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
-                GlobalVar.primaryStage.show();
+
+                System.out.println("Koneksi -> " + MySqlCon.cekConn());
+
+                int cek = MySqlCon.cekNIM(nimFields.getText());
+
+                if (cek == 0) {
+                    cekNIM_Fields.setText("NIM Tidak Valid!");
+                } else if (cek == 2) {
+                    cekNIM_Fields.setText("NIM Telah Memilih!");
+                } else {
+                    cekNIM_Fields.setText("");
+                    VoteWindow voteWindow = new VoteWindow();
+                    ControlsHelper.changeScene(voteWindow.content);
+                    GlobalVar.primaryStage.hide();
+                    GlobalVar.valueNIM = nimFields.getText();
+                    GlobalVar.primaryStage.setFullScreen(true);
+                    GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+                    GlobalVar.primaryStage.show();
+                }
             }
+            loadingWindow.setLabelText("Done");
+            loadingDialog.close();
+        } else {
+            cekNIM_Fields.setText("Password salah!");
         }
-        loadingWindow.setLabelText("Done");
-        loadingDialog.close();
     }
 
     @FXML
