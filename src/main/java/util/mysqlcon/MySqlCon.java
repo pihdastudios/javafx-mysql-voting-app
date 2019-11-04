@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.io.IOException;
 import java.sql.*;
 import java.io.*;
+import java.util.concurrent.ExecutionException;
 
 import com.opencsv.CSVWriter;
 
@@ -24,8 +25,7 @@ public class MySqlCon {
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             ResultSet rs = preparedStmt.executeQuery();
             return false;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             startConnection();
             System.err.println("Connection failed, got an exception! ");
             System.err.println(e.getMessage());
@@ -40,7 +40,6 @@ public class MySqlCon {
         Timestamp timeStamp = new Timestamp(System.currentTimeMillis());
         String encryptedNIM = AES.encrypt(nim, GlobalVar.AESKey);
         String query = "insert into BALLOTS (NIMHASH, VOTE, WAKTU)" + " values (?, ?, ?)";
-
         // create the mysql insert preparedstatement
         PreparedStatement preparedStmt = conn.prepareStatement(query);
         preparedStmt.setString(1, encryptedNIM);
@@ -68,6 +67,7 @@ public class MySqlCon {
             e.printStackTrace();
         }
 
+        System.out.println("Update " + nim + " status to 2");
         query = "update VOTERS set STATUS = 2 where NIM = ?";
         preparedStmt = conn.prepareStatement(query);
         preparedStmt.setString(1, nim);
@@ -100,7 +100,7 @@ public class MySqlCon {
         //if row exist
         if (rs.next()) {
             int cek = rs.getInt("STATUS");
-            System.out.println(nim + " : " + cek);
+            System.out.println(nim + " status : " + cek);
             return cek;
         } else {
             System.out.println(nim + " Tidak Valid!");

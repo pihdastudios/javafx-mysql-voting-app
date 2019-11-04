@@ -42,6 +42,8 @@ public class AdminView extends VBox {
     @FXML
     private Button openFolderBtn;
     @FXML
+    private Button backBtn1;
+    @FXML
     private Button backBtn;
     private String dir;
     private Stage primaryStage;

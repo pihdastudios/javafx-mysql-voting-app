@@ -6,8 +6,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import pemilukm.teti.controls.helpers.ControlsHelper;
-import util.mysqlcon.MySqlCon;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -48,26 +49,38 @@ public class VoteWindow extends VBox {
 
 	@FXML
 	protected void onCandBtn_1() throws SQLException {
-		MySqlCon.addVote(GlobalVar.valueNIM, 1);
-		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
-		GlobalVar.primaryStage.setFullScreen(true);
-		GlobalVar.primaryStage.show();
+		PopupVoteView popupVoteView = new PopupVoteView();
+		popupVoteView.setVote(1);
+		Stage popupDialog = ControlsHelper.createModalStageFor(content, popupVoteView.content, "Prompt");
+		popupVoteView.stage = popupDialog;
+		popupDialog.initStyle(StageStyle.UNDECORATED);
+		popupDialog.setHeight(300);
+		popupDialog.setWidth(300);
+		popupDialog.show();
 	}
 
 	@FXML
 	protected void onCandBtn_2() throws SQLException {
-		MySqlCon.addVote(GlobalVar.valueNIM, 2);
-		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
-		GlobalVar.primaryStage.setFullScreen(true);
-		GlobalVar.primaryStage.show();
+		PopupVoteView popupVoteView = new PopupVoteView();
+		popupVoteView.setVote(2);
+		Stage popupDialog = ControlsHelper.createModalStageFor(content, popupVoteView.content, "Prompt");
+		popupVoteView.stage = popupDialog;
+		popupDialog.initStyle(StageStyle.UNDECORATED);
+		popupDialog.setHeight(300);
+		popupDialog.setWidth(300);
+		popupDialog.show();
 	}
 
 	@FXML
 	protected void onCandBtn_3() throws SQLException {
-		MySqlCon.addVote(GlobalVar.valueNIM, 3);
-		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
-		GlobalVar.primaryStage.setFullScreen(true);
-		GlobalVar.primaryStage.show();
+		PopupVoteView popupVoteView = new PopupVoteView();
+		popupVoteView.setVote(3);
+		Stage popupDialog = ControlsHelper.createModalStageFor(content, popupVoteView.content, "Prompt");
+		popupVoteView.stage = popupDialog;
+		popupDialog.initStyle(StageStyle.UNDECORATED);
+		popupDialog.setHeight(300);
+		popupDialog.setWidth(300);
+		popupDialog.show();
 	}
 
 	public void adjustImg() {

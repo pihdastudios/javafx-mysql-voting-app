@@ -106,8 +106,6 @@ public class MainView extends Application {
                 } else if (cek == 2) {
                     cekNIM_Fields.setText("NIM Telah Memilih!");
                 } else {
-                    mainPassFields.setText("");
-                    cekNIM_Fields.setText("");
                     VoteWindow voteWindow = new VoteWindow();
                     ControlsHelper.changeScene(voteWindow.content);
                     GlobalVar.primaryStage.hide();
@@ -115,6 +113,9 @@ public class MainView extends Application {
                     GlobalVar.primaryStage.setFullScreen(true);
                     GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
                     GlobalVar.primaryStage.show();
+                    nimFields.setText("");
+                    mainPassFields.setText("");
+                    cekNIM_Fields.setText("");
                 }
             }
             loadingWindow.setLabelText("Done");

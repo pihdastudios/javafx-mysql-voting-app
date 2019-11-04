@@ -63,7 +63,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <PasswordField fx:id="mainPassFields" onAction="#onPass" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="mainPassFields" onAction="#onPass" promptText="Silakan input NIM saja, petugas akan menginput password." GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />
