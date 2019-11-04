@@ -3,6 +3,7 @@ package pemilukm.teti;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
@@ -32,7 +33,7 @@ class PopupVoteView extends VBox {
         content = ControlsHelper.initControl(this);
     }
 
-    public static void setVote(int val){
+    public void setVote(int val){
         voteLabel.setText("Anda memilih calon nomor urut " + val);
         voteCand = val;
     }
