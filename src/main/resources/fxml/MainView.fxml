@@ -52,9 +52,8 @@
                     </font>
                 </Text>
                 <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onEnterBtn" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: rgb(22,131,160);" text="Enter" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onExitBtn" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: rgb(22,131,160);" text="Exit" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onAdminBtn" prefHeight="70.0" prefWidth="150.0" style="-fx-background-color: rgb(22,131,160);" text="Admin" textFill="WHITE" GridPane.rowIndex="4" />
-                <TextField fx:id="nimFields" onAction="#onNIM" style="-fx-background-color: rgb(184,224,225);" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <TextField fx:id="nimFields" onAction="#onNIM" promptText="19/439800/TK/48500" style="-fx-background-color: rgb(184,224,225);" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="36.0" />
                </font>
@@ -64,7 +63,7 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <PasswordField fx:id="mainPassFields" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <PasswordField fx:id="mainPassFields" onAction="#onPass" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <font>
                   <Font size="24.0" />

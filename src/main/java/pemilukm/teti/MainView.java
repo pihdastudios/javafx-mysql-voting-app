@@ -71,6 +71,19 @@ public class MainView extends Application {
     }
 
     @FXML
+    protected void onPass() {
+        nimFields.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                try {
+                    onEnterBtn();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    @FXML
     protected void onEnterBtn() throws SQLException {
         if (mainPassFields.getText().equals(GlobalVar.passMain)) {
             LoadingWindow loadingWindow = new LoadingWindow();
@@ -93,6 +106,7 @@ public class MainView extends Application {
                 } else if (cek == 2) {
                     cekNIM_Fields.setText("NIM Telah Memilih!");
                 } else {
+                    mainPassFields.setText("");
                     cekNIM_Fields.setText("");
                     VoteWindow voteWindow = new VoteWindow();
                     ControlsHelper.changeScene(voteWindow.content);
@@ -119,11 +133,5 @@ public class MainView extends Application {
         popupDialog.setHeight(300);
         popupDialog.setWidth(300);
         popupDialog.show();
-    }
-
-    @FXML
-    protected void onExitBtn() {
-        Platform.exit();
-        System.exit(0);
     }
 }

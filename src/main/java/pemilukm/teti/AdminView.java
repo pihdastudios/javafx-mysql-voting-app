@@ -1,5 +1,6 @@
 package pemilukm.teti;
 
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -36,6 +37,8 @@ public class AdminView extends VBox {
     private Button createDbBtn;
     @FXML
     private Button backupBtn;
+    @FXML
+    private Button exitBtn;
     @FXML
     private Button openFolderBtn;
     @FXML
@@ -117,5 +120,12 @@ public class AdminView extends VBox {
         GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
         GlobalVar.primaryStage.setFullScreen(true);
         GlobalVar.primaryStage.show();
+    }
+
+
+    @FXML
+    protected void onExitBtn() {
+        Platform.exit();
+        System.exit(0);
     }
 }
