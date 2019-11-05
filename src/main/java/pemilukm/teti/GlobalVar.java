@@ -9,6 +9,6 @@ public class GlobalVar {
     public static String valueNIM;
     public static boolean connActive;
     public static String AESKey = "$PemiluKMTETI19@";
-    public static String passAdmin = "";
-    public static String passMain = "";
+    public static String passAdmin = "19pemilu";
+    public static String passMain = "191919";
 }
