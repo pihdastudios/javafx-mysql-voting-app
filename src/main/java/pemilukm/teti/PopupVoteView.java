@@ -56,7 +56,7 @@ class PopupVoteView extends VBox {
 
     @FXML
     protected void onYesBtn() throws SQLException{
-        //MySqlCon.addVote(GlobalVar.valueNIM, voteCand);
+        MySqlCon.addVote(GlobalVar.valueNIM, voteCand);
         FinishedVoteView finishedVoteView = new FinishedVoteView();
         ControlsHelper.changeScene(finishedVoteView.content);
         finishedVoteView.setHotkey();
