@@ -48,18 +48,6 @@ public class VoteWindow extends VBox {
 	}
 
 	@FXML
-	protected void onCandBtn_1() throws SQLException {
-		PopupVoteView popupVoteView = new PopupVoteView();
-		popupVoteView.setVote(1);
-		Stage popupDialog = ControlsHelper.createModalStageFor(content, popupVoteView.content, "Prompt");
-		popupVoteView.stage = popupDialog;
-		popupDialog.initStyle(StageStyle.UNDECORATED);
-		popupDialog.setHeight(300);
-		popupDialog.setWidth(300);
-		popupDialog.show();
-	}
-
-	@FXML
 	protected void onCandBtn_2() throws SQLException {
 		PopupVoteView popupVoteView = new PopupVoteView();
 		popupVoteView.setVote(2);
@@ -91,44 +79,27 @@ public class VoteWindow extends VBox {
 	}
 
 	@FXML
-	protected void onMouseEntered_1() throws IOException {
-		img_1.setImage(new Image("img/DewanB.jpg"));
-		adjustImg();
-	}
-
-	@FXML
 	protected void onMouseEntered_2() {
 		img_2.setImage(new Image("img/FirhanB.jpg"));
 		adjustImg();
-
 	}
 
 	@FXML
 	protected void onMouseEntered_3() {
 		img_3.setImage(new Image("img/GayongB.jpg"));
 		adjustImg();
-
-	}
-
-	@FXML
-	protected void onMouseExited_1() {
-		img_1.setImage(new Image("img/DewanA.jpg"));
-		adjustImg();
-
 	}
 
 	@FXML
 	protected void onMouseExited_2() {
 		img_2.setImage(new Image("img/FirhanA.jpg"));
 		adjustImg();
-
 	}
 
 	@FXML
 	protected void onMouseExited_3() {
 		img_3.setImage(new Image("img/GayongA.jpg"));
 		adjustImg();
-
 	}
 
 	@FXML

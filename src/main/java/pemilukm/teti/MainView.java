@@ -2,6 +2,7 @@ package pemilukm.teti;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,7 +11,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -44,10 +47,19 @@ public class MainView extends Application {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().getResource("fxml/MainView.fxml")));
 
         Scene scene = new Scene(root);
+        scene.getAccelerators().put(
+                new KeyCodeCombination(KeyCode.R, KeyCombination.CONTROL_DOWN),
+                new Runnable() {
+                    @Override public void run() {
+                        onAdminBtn();
+                    }
+                }
+        );
         GlobalVar.mainScene = scene;
         GlobalVar.primaryStage.setTitle("Pemilu KMTETI 2019");
         GlobalVar.primaryStage.setMinWidth(600);
         GlobalVar.primaryStage.setMinHeight(400);
+        GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         GlobalVar.primaryStage.setScene(scene);
         GlobalVar.primaryStage.setFullScreen(true);
         GlobalVar.primaryStage.show();

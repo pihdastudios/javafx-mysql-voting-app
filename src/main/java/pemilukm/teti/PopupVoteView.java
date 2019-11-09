@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -54,10 +55,13 @@ class PopupVoteView extends VBox {
 
 
     @FXML
-    protected void onYesBtn() throws SQLException {
-        MySqlCon.addVote(GlobalVar.valueNIM, voteCand);
-        GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
+    protected void onYesBtn() throws SQLException{
+        //MySqlCon.addVote(GlobalVar.valueNIM, voteCand);
+        FinishedVoteView finishedVoteView = new FinishedVoteView();
+        ControlsHelper.changeScene(finishedVoteView.content);
+        finishedVoteView.setHotkey();
         GlobalVar.primaryStage.setFullScreen(true);
+        GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
         GlobalVar.primaryStage.show();
         stage.close();
     }
