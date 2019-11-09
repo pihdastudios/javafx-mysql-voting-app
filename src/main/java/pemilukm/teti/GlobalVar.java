@@ -12,7 +12,7 @@ public class GlobalVar {
     public static String valueNIM;
     public static String textNIM;
     public static boolean connActive;
-    public static String AESKey = "$PemiluKMTETI19@";
+    public static String AESKey = "<]pemilu!TETI19*";
     public static String passAdmin = "semangat";
     public static String passMain = "19lagi";
 

@@ -28,10 +28,10 @@
                 <Label text="Password" GridPane.rowIndex="1" />
                 <Label text="URL" GridPane.rowIndex="2" />
                 <Label text="DB Name" GridPane.rowIndex="3" />
-                <TextField fx:id="usernameField" onAction="#onUsername" text="798f6TUvl7" GridPane.columnIndex="1" />
-                <PasswordField fx:id="passwordField" text="g5cMKh6FrO" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="usernameField" onAction="#onUsername" text="ZROkDxzBDP" GridPane.columnIndex="1" />
+                <PasswordField fx:id="passwordField" text="4iqT8znGd8" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <TextField fx:id="urlField" text="remotemysql.com" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <TextField fx:id="dbNameField" text="798f6TUvl7" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <TextField fx:id="dbNameField" text="ZROkDxzBDP" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             </children>
             <VBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
