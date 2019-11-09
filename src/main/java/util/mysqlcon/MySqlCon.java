@@ -100,6 +100,7 @@ public class MySqlCon {
         //if row exist
         if (rs.next()) {
             int cek = rs.getInt("STATUS");
+            GlobalVar.textNIM = ( rs.getString("NIM") + " " + rs.getString("NAMA") + " " + rs.getString("JURUSAN") + " " + rs.getInt("ANGKATAN") );
             System.out.println(nim + " status : " + cek);
             return cek;
         } else {

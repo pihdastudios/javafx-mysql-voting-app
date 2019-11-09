@@ -43,7 +43,7 @@
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Terimakasih telah menggunakan hak pilih Anda.">
                <font>
-                  <Font size="36.0" />
+                  <Font name="System Italic" size="36.0" />
                </font>
             </Text>
          </children>

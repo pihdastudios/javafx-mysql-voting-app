@@ -2,10 +2,12 @@ package pemilukm.teti;
 
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import pemilukm.teti.controls.helpers.ControlsHelper;
@@ -17,7 +19,9 @@ import java.sql.SQLException;
 public class VoteWindow extends VBox {
 	public Parent content;
 	@FXML
-	private ImageView img_1;
+	private Button btn_2;
+	@FXML
+	private Button btn_3;
 	@FXML
 	private ImageView img_2;
 	@FXML
@@ -28,15 +32,17 @@ public class VoteWindow extends VBox {
 	private StackPane stackPane_2;
 	@FXML
 	private StackPane stackPane_3;
+	@FXML
+	private Text dataNIM;
 	private boolean init;
 
 	VoteWindow() {
 		content = ControlsHelper.initControl(this);
-
 	}
 
 	@FXML
 	public void initialize() {
+		setTextNIM("");
 //		adjustImg();
 	}
 
@@ -45,6 +51,11 @@ public class VoteWindow extends VBox {
 //		GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
 //		GlobalVar.primaryStage.setFullScreen(true);
 //		GlobalVar.primaryStage.show();
+	}
+
+	@FXML
+	public void setTextNIM(String s){
+		dataNIM.setText(s);
 	}
 
 	@FXML
@@ -81,24 +92,28 @@ public class VoteWindow extends VBox {
 	@FXML
 	protected void onMouseEntered_2() {
 		img_2.setImage(new Image("img/FirhanB.jpg"));
+		btn_2.setStyle("-fx-background-color: rgb(16, 116, 143)");
 		adjustImg();
 	}
 
 	@FXML
 	protected void onMouseEntered_3() {
 		img_3.setImage(new Image("img/GayongB.jpg"));
+		btn_3.setStyle("-fx-background-color: rgb(16, 116, 143)");
 		adjustImg();
 	}
 
 	@FXML
 	protected void onMouseExited_2() {
 		img_2.setImage(new Image("img/FirhanA.jpg"));
+		btn_2.setStyle("-fx-background-color: rgb(22, 131, 160)");
 		adjustImg();
 	}
 
 	@FXML
 	protected void onMouseExited_3() {
 		img_3.setImage(new Image("img/GayongA.jpg"));
+		btn_3.setStyle("-fx-background-color: rgb(22, 131, 160)");
 		adjustImg();
 	}
 

@@ -38,7 +38,7 @@ public class FinishedVoteView extends VBox {
     @FXML
     protected void backToMain() {
         GlobalVar.primaryStage.setScene(GlobalVar.mainScene);
-        GlobalVar.primaryStage.setFullScreen(true);
+        GlobalVar.kiosk();
         GlobalVar.primaryStage.show();
     }
 }

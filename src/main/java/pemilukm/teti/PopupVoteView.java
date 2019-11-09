@@ -60,8 +60,7 @@ class PopupVoteView extends VBox {
         FinishedVoteView finishedVoteView = new FinishedVoteView();
         ControlsHelper.changeScene(finishedVoteView.content);
         finishedVoteView.setHotkey();
-        GlobalVar.primaryStage.setFullScreen(true);
-        GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        GlobalVar.kiosk();
         GlobalVar.primaryStage.show();
         stage.close();
     }

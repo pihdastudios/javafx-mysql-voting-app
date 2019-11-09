@@ -17,6 +17,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import pemilukm.teti.controls.helpers.ControlsHelper;
 import util.mysqlcon.MySqlCon;
 
@@ -55,13 +56,14 @@ public class MainView extends Application {
                     }
                 }
         );
+        Platform.setImplicitExit(false);
         GlobalVar.mainScene = scene;
         GlobalVar.primaryStage.setTitle("Pemilu KMTETI 2019");
-        GlobalVar.primaryStage.setMinWidth(600);
-        GlobalVar.primaryStage.setMinHeight(400);
-        GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+        GlobalVar.primaryStage.setAlwaysOnTop(true);
+//        GlobalVar.primaryStage.setMinWidth(600);
+//        GlobalVar.primaryStage.setMinHeight(400);
         GlobalVar.primaryStage.setScene(scene);
-        GlobalVar.primaryStage.setFullScreen(true);
+        GlobalVar.kiosk();
         GlobalVar.primaryStage.show();
     }
 
@@ -120,10 +122,10 @@ public class MainView extends Application {
                 } else {
                     VoteWindow voteWindow = new VoteWindow();
                     ControlsHelper.changeScene(voteWindow.content);
-                    GlobalVar.primaryStage.hide();
+                    voteWindow.setTextNIM(GlobalVar.textNIM);
+//                    GlobalVar.primaryStage.hide();
                     GlobalVar.valueNIM = nimFields.getText();
-                    GlobalVar.primaryStage.setFullScreen(true);
-                    GlobalVar.primaryStage.setFullScreenExitKeyCombination(KeyCombination.NO_MATCH);
+                    GlobalVar.kiosk();
                     GlobalVar.primaryStage.show();
                     nimFields.setText("");
                     mainPassFields.setText("");
