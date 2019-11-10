@@ -86,7 +86,7 @@ public class MainView extends Application {
 
     @FXML
     protected void onPass() {
-        nimFields.setOnKeyPressed(event -> {
+        mainPassFields.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
                 try {
                     onEnterBtn();
