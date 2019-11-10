@@ -1,55 +1,48 @@
-package util.hash;
+package util.hash
 
-import java.io.UnsupportedEncodingException;
-import java.util.Base64;
+import java.io.UnsupportedEncodingException
+import java.util.Base64
 
-import javax.crypto.Cipher;
-import javax.crypto.spec.SecretKeySpec;
+import javax.crypto.Cipher
+import javax.crypto.spec.SecretKeySpec
 
-public class AES {
+object AES {
 
-    private static SecretKeySpec secretKey;
-    private static byte[] key;
+    private var secretKey: SecretKeySpec? = null
+    private val key: ByteArray? = null
 
-    public static void setKey(String myKey)
-    {
+    fun setKey(myKey: String) {
         try {
-            secretKey = new SecretKeySpec(myKey.getBytes("UTF-8"), "AES");
+            secretKey = SecretKeySpec(myKey.toByteArray(charset("UTF-8")), "AES")
+        } catch (e: UnsupportedEncodingException) {
+            e.printStackTrace()
         }
-        catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+
     }
 
-    public static String encrypt(String strToEncrypt, String secret)
-    {
-        try
-        {
-            setKey(secret);
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-            cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-            return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.getBytes("UTF-8")));
+    fun encrypt(strToEncrypt: String, secret: String): String? {
+        try {
+            setKey(secret)
+            val cipher = Cipher.getInstance("AES/ECB/PKCS5Padding")
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+            return Base64.getEncoder().encodeToString(cipher.doFinal(strToEncrypt.toByteArray(charset("UTF-8"))))
+        } catch (e: Exception) {
+            println("Error while encrypting: $e")
         }
-        catch (Exception e)
-        {
-            System.out.println("Error while encrypting: " + e.toString());
-        }
-        return null;
+
+        return null
     }
 
-    public static String decrypt(String strToDecrypt, String secret)
-    {
-        try
-        {
-            setKey(secret);
-            Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
-            cipher.init(Cipher.DECRYPT_MODE, secretKey);
-            return new String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)));
+    fun decrypt(strToDecrypt: String, secret: String): String? {
+        try {
+            setKey(secret)
+            val cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING")
+            cipher.init(Cipher.DECRYPT_MODE, secretKey)
+            return String(cipher.doFinal(Base64.getDecoder().decode(strToDecrypt)))
+        } catch (e: Exception) {
+            println("Error while decrypting: $e")
         }
-        catch (Exception e)
-        {
-            System.out.println("Error while decrypting: " + e.toString());
-        }
-        return null;
+
+        return null
     }
 }
