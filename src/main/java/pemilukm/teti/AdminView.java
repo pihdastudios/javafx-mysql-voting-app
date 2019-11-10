@@ -9,6 +9,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,6 +18,7 @@ import util.mysqlcon.MySqlCon;
 
 import java.awt.*;
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class AdminView extends VBox {
     Parent content;
@@ -45,6 +47,8 @@ public class AdminView extends VBox {
     private Button backBtn1;
     @FXML
     private Button backBtn;
+    @FXML
+    private Text fieldKoneksi;
     private String dir;
     private Stage primaryStage;
 
@@ -74,7 +78,14 @@ public class AdminView extends VBox {
             @Override
             public Boolean call() {
                 setData();
-                MySqlCon.startConnection();
+                try{
+                    MySqlCon.startConnection();
+                } catch (SQLException ex){
+                    System.out.println("Exception: " + ex.getMessage());
+                    if(ex.getMessage().startsWith("Could not create connection to database server.")){
+                        fieldKoneksi.setText("Koneksi gagal! Cek kembali jaringan internet Anda!");
+                    }
+                }
                 return true;
             }
         };
@@ -88,7 +99,6 @@ public class AdminView extends VBox {
             loadingDialog.close();
         });
         new Thread(task).start();
-
     }
 
     @FXML
@@ -104,10 +114,10 @@ public class AdminView extends VBox {
     }
 
     private void setData() {
+        fieldKoneksi.setText("");
         MySqlCon.username = usernameField.getText();
         MySqlCon.password = passwordField.getText();
         MySqlCon.address = urlField.getText();
-
         MySqlCon.dbName = dbNameField.getText();
     }
 

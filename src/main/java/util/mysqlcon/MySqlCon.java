@@ -167,7 +167,7 @@ public class MySqlCon {
     /**
      * Connects to a database
      */
-    public static void startConnection() {
+    public static void startConnection() throws SQLException{
         if (StringUtils.isNotEmpty(username) || StringUtils.isNotEmpty(password)
                 || StringUtils.isNotEmpty(address) || StringUtils.isNotEmpty(dbName)) {
             try {
@@ -180,10 +180,12 @@ public class MySqlCon {
                 System.out.println("SQLException: " + ex.getMessage());
                 System.out.println("SQLState: " + ex.getSQLState());
                 System.out.println("VendorError: " + ex.getErrorCode());
+                throw ex;
             }
 
         } else {
             System.out.println("MySql Information Not Complete");
+            throw new SQLException("MySql Information Not Complete");
         }
     }
 
@@ -192,6 +194,11 @@ public class MySqlCon {
         password = pPassword;
         address = pAddress;
         dbName = pDbname;
-        startConnection();
+        try{
+            startConnection();
+        }
+        catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 }

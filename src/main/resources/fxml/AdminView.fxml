@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <VBox fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
@@ -55,6 +56,7 @@
                 <Button fx:id="openFolderBtn" mnemonicParsing="false" onAction="#onOpenFolderBtn" text="Open Folder" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Button fx:id="exitBtn" mnemonicParsing="false" onAction="#onExitBtn" text="Exit Application" GridPane.rowIndex="3" />
             <Button fx:id="backBtn1" layoutX="295.0" layoutY="149.0" mnemonicParsing="false" onAction="#onBackBtn" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text fx:id="fieldKoneksi" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="1" />
             </children>
             <VBox.margin>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
